@@ -4,12 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-<<<<<<< HEAD
-   
-    "start": "node app.js"
-=======
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> 539d853734a3c3f645aa3d2936f2190a05a1ebb1
+  "start": "node app.js"
   },
   "keywords": [],
   "author": "",
