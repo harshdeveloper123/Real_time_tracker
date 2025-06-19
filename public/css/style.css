@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 html,body{
     height: 100%;
     width: 100%;
@@ -13,7 +13,8 @@ html,body{
 #map{
     width: 100%;
     height: 100%;
-=======
+}
+
 html,body{
     height: 100%;
     width: 100%;
@@ -28,5 +29,5 @@ html,body{
 #map{
     width: 100%;
     height: 100%;
->>>>>>> 539d853734a3c3f645aa3d2936f2190a05a1ebb1
+
 }
