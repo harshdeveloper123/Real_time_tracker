@@ -1,4 +1,9 @@
 const socket = io();
+let mySocketId = null;
+
+socket.on("connect", () => {
+    mySocketId = socket.id;
+});
 
 if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
@@ -23,21 +28,15 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "OpenStreetMap"
 }).addTo(map);
 
-const markers = {};
+// Only one marker: your own
+const myMarker = L.marker([0, 0]).addTo(map);
 
 socket.on("receive-location", (data) => {
     const { id, latitude, longitude } = data;
-    map.setView([latitude, longitude]);
-    if (markers[id]) {
-        markers[id].setLatLng([latitude, longitude]);
-    } else {
-        markers[id] = L.marker([latitude, longitude]).addTo(map);
-    }
-});
 
-socket.on("user-disconnected", (id) => {
-    if (markers[id]) {
-        map.removeLayer(markers[id]);
-        delete markers[id];
+    if (id === mySocketId) {
+        myMarker.setLatLng([latitude, longitude]);
+        map.setView([latitude, longitude], 16);
     }
+    // Ignore others
 });
